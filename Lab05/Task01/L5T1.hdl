@@ -1,0 +1,17 @@
+/*Lab05 Task01*/
+CHIP L5T1{
+    IN a[16], load, address[17];
+    OUT out[16];
+
+    PARTS:
+    DMux8Way(in=load, sel=address[14..16], a=i, b=j, c=k, d=l, e=m, f=n, g=o, h=p);
+    RAM16K(in=a, load=i, address=address[0..13], out=oi);
+    RAM16K(in=a, load=j, address=address[0..13], out=oj);
+    RAM16K(in=a, load=k, address=address[0..13], out=ok);
+    RAM16K(in=a, load=l, address=address[0..13], out=ol);
+    RAM16K(in=a, load=m, address=address[0..13], out=om);
+    RAM16K(in=a, load=n, address=address[0..13], out=on);
+    RAM16K(in=a, load=o, address=address[0..13], out=oo);
+    RAM16K(in=a, load=p, address=address[0..13], out=op);
+    Mux8Way16(a=oi, b=oj, c=ok, d=ol, e=om, f=on, g=oo, h=op, sel=address[14..16], out=out);
+}

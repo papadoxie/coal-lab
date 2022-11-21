@@ -1,0 +1,5 @@
+break main
+watch ch
+break /home/papadoxie/Desktop/Code/coal_lab_bcsf19a515/Lab10/Task02/Task02.c:9
+  condition $bpnum ch == ','
+

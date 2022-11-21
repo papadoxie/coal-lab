@@ -1,0 +1,92 @@
+When function starts, return pointer and base pointer are pushed onto the stack
+
+18  0x0000555555555191  Return Pointer
+17  0x00007fffffffdcd0  RBP
+
+Allocation of 0x10 bytes is made on stack to store local variables and array
+
+18  0x0000555555555191  Return Pointer (16 Bytes)
+17  0x00007fffffffdcd0  RBP	       	   (16 Bytes)
+16  0x--  		Alignment <-------------
+15  0x--		Alignment				|
+14  0x--		Alignment				|
+13  0x--		rv						|
+12  0x--		buf[9]					|
+11  0x--								|
+10  0x--								|
+09  0x--				        		16
+08  0x--				       		   Bytes
+07  0x--								|
+06  0x--								|
+05  0x--								|
+04  0x-- 								|
+03  0x--		buf[0]					|
+02  0x--		Alignment				|
+01  0x--		Alignment <-------------
+
+Once we start writing data into the array it changes to
+
+18  0x0000555555555191  Return Pointer (16 Bytes)
+17  0x00007fffffffdcd0  RBP	       	   (16 Bytes)
+16  0x--  		Alignment <-------------
+15  0x--		Alignment				|
+14  0x--		Alignment				|
+13  0x--		rv						|
+12  0x0a		buf[9]					|
+11  0x41								|
+10  0x41								|
+09  0x41				        		16
+08  0x41				       		  Bytes
+07  0x41								|
+06  0x41								|
+05  0x41								|
+04  0x41 								|
+03  0x41		buf[0]					|
+02  0x--		Alignment				|
+01  0x--		Alignment <-------------
+
+Starting to go past bounds
+
+18  0x0000555555555191  Return Pointer (16 Bytes)
+17  0x00007fffffffdcd0  RBP	       	   (16 Bytes)
+16  0x0a  		Alignment <-------------
+15  0x41		Alignment				|
+14  0x41		Alignment				|
+13  0x41		rv						|
+12  0x41		buf[9]					|
+11  0x41								|
+10  0x41								|
+09  0x41				        		16
+08  0x41				       		  Bytes
+07  0x41								|
+06  0x41								|
+05  0x41								|
+04  0x41 								|
+03  0x41		buf[0]					|
+02  0x--		Alignment				|
+01  0x--		Alignment <-------------
+
+Next we will have to overwrite the 16 bytes of the base pointer and then overwrite the return pointer
+
+18  0x000055555555510a  Return Pointer (16 Bytes)
+17  0x4141414141414141  RBP	       	   (16 Bytes)
+16  0x41  		Alignment <-------------
+15  0x41		Alignment				|
+14  0x41		Alignment				|
+13  0x41		rv						|
+12  0x41		buf[9]					|
+11  0x41								|
+10  0x41								|
+09  0x41				        		16
+08  0x41				       		   Bytes
+07  0x41								|
+06  0x41								|
+05  0x41								|
+04  0x41 								|
+03  0x41		buf[0]					|
+02  0x--		Alignment				|
+01  0x--		Alignment <-------------
+
+Segmentation Fault will occur when return pointer is overwritten
+This will occur after we write 10+4+8 = 22 characters.
+Segmentation Fault on my computer occured when 23 characters were written

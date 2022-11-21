@@ -1,0 +1,34 @@
+1.
+	Run GDB with
+	gdb --args <program> <arguments>
+	
+	OR
+	Inside GDB
+	run <arguments>
+
+2.
+	break <line#> if <condition>
+
+3.
+	next
+
+4.
+	step
+
+5.
+	continue
+
+6.
+	finish
+
+7.
+	print <variable_name>
+
+8.
+	display <variable_name>
+
+9.
+	info scope <function_name>
+
+10.
+	info functions	

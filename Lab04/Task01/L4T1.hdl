@@ -1,0 +1,13 @@
+/**Lab04 Task01**/
+
+CHIP L4T1{
+    IN a, b, cin, sel[2];
+    OUT out, cout;
+
+    PARTS:
+    And(a=a, b=b, out=aandb);
+    Or(a=a, b=b, out=aorb);
+    Xor(a=a, b=b, out=axorb);
+    FullAdder(a=a, b=b, c=cin, sum=aplusb, carry=cout);
+    Mux4Way(a=aandb, b=aorb, c=axorb, d=aplusb, sel=sel, out=out);
+}

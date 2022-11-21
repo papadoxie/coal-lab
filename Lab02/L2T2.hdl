@@ -1,0 +1,11 @@
+/** Lab02 Task 02 **/
+
+CHIP L2T2{
+    IN s, k, d;
+    OUT b;
+
+    PARTS:
+    Not(in=s, out=nots);
+    And(a=nots, b=k, out=notsAndk);
+    Or(a=notsAndk, b=d, out=b);
+}

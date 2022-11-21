@@ -1,0 +1,13 @@
+/** Lab02 Task 03 **/
+
+CHIP L2T3{
+    IN a, b,c;
+    OUT out;
+
+    PARTS:
+    And(a=b, b=c, out=bAndc);
+    And(a=a, b=c, out=aAndc);
+    And(a=a, b=b, out=aAndb);
+    Or(a=bAndc, b=aAndc, out=bAndcORaAndc);
+    Or(a=bAndcORaAndc, b=aAndb, out=out); 
+}

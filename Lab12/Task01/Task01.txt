@@ -1,0 +1,11 @@
+01. Nop used for alignment
+02. Move the 32 bit representation of 0x0 to the allocation pointed by rbp-4
+03. Load value at rbp-4 into rax
+04. Increment 32 bit value pointed to by rax
+05. Move the 32 bit representation of 0x80674040 to the allocation pointed by esp
+06. Move msg into ecx
+07. Add value in al to value pointed by eax
+08. Pseudo Instruction to define a variable named "var" which contains "A", "B", "C"
+09. Define constant named len with value (section_start - section_current) or total size of the section
+10. Define variable named buff with 256 bytes filled with 0x41
+11. Nop

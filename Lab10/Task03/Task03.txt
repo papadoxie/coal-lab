@@ -1,0 +1,4 @@
+Looking at the code we can see that the read() function is reading 1000 bytes
+and storing them in an array of 10 bytes. This will cause an overflow and stack will start
+to be overwritten.
+This can be fixed by reading only 10 bytes into the array.

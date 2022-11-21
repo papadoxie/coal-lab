@@ -1,0 +1,4 @@
+$rax = 0x1a
+The return value for the write() syscall is the number of bytes written to stream
+and its stored in rax
+This number is given in rdx

@@ -1,0 +1,43 @@
+/** Lab03 Task 01 **/
+
+CHIP L3T1{
+    IN d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, dA, dB, dC, dD, dE, dF;
+    OUT w, x, y, z;
+
+    PARTS:
+    //Z
+    Or(a=d1, b=d3, out=d13);
+    Or(a=d13, b=d5, out=d135);
+    Or(a=d135, b=d7, out=d1357);
+    Or(a=d1357, b=d9, out=d13579);
+    Or(a=d13579, b=dB, out=d13579B);
+    Or(a=d13579B, b=dD, out=d13579BD);
+    Or(a=d13579BD, b=dF, out=z);
+
+    //Y
+    Or(a=d2, b=d3, out=d23);
+    Or(a=d23, b=d6, out=d236);
+    Or(a=d236, b=d7, out=d2367);
+    Or(a=d2367, b=dA, out=d2367A);
+    Or(a=d2367A, b=dB, out=d2367AB);
+    Or(a=d2367AB, b=dE, out=d2367ABE);
+    Or(a=d2367ABE, b=dF, out=y);
+
+    //X
+    Or(a=d4, b=d5, out=d45);
+    Or(a=d45, b=d6, out=d456);
+    Or(a=d456, b=d7, out=d4567);
+    Or(a=d4567, b=dC, out=d4567C);
+    Or(a=d4567C, b=dD, out=d4567CD);
+    Or(a=d4567CD, b=dE, out=d4567CDE);
+    Or(a=d4567CDE, b=dF, out=x);
+
+    //W
+    Or(a=d8, b=d9, out=d89);
+    Or(a=d89, b=dA, out=d89A);
+    Or(a=d89A, b=dB, out=d89BA);
+    Or(a=d89BA, b=dC, out=d89ABC);
+    Or(a=d89ABC, b=dD, out=d89ABCD);
+    Or(a=d89ABCD, b=dE, out=d89ABCDE);
+    Or(a=d89ABCDE, b=dF, out=w);
+}

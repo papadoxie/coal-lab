@@ -1,0 +1,12 @@
+/** Lab02 Task 01 **/
+
+CHIP L2T1{
+    IN a, b ,c;
+    OUT out;
+
+    PARTS:
+    Not(in=a, out=nota);
+    And(a=nota, b=b, out=notaAndb);
+    And(a=a, b=c, out=aAndc);
+    Or(a=notaAndb, b=aAndc, out=out);
+}
